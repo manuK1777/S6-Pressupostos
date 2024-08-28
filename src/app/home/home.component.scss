@@ -1,0 +1,147 @@
+
+h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; 
+}
+
+p, a, span, div {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; 
+    font-size: 0.9rem;
+}
+
+.form-check-label, .prod-description {
+    color: rgb(122, 115, 115);
+}
+
+.brand {
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+.header-box {
+    //background-color: #eedd9c;
+    background-image: url("../../assets/bg-3.svg");
+    opacity: 0.8;
+    margin-top: 25px;
+    margin-bottom: 110px;
+    padding-top: 65px;
+    padding-bottom: 65px;
+    border-radius: 20px;
+}
+
+.cust-H1 {
+    text-align: center;
+    width: 610px;
+    color: black;
+    font-weight: bold;
+    background-color: rgba(228, 220, 199, 0.7);
+   // opacity: 0.8;
+    //font-size: 1.9rem
+}
+
+.custom-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+    padding-top: 22px;
+    padding-bottom: 22px;
+    border-radius: 20px;
+}
+
+.seo-cont {
+    margin-left: 52px;
+}
+
+.price {
+  margin-left: 52px;
+}
+
+.euro {
+    font-size: 1rem;
+}
+
+.form-check {
+    margin-left: 120px;
+}
+
+.form-check-input {
+    border-color: black;
+}
+
+.preuFinal-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 62px;
+    padding-bottom:80px;
+}
+
+.custom-H4 {
+    margin-right: 148px;
+}
+
+@media screen and (max-width: 991.8px) {
+    
+    .price {
+        margin-left: 12px;
+      }
+
+      .form-check {
+        margin-left: 62px;
+    }
+
+    .custom-H4 {
+        margin-right: 96px;
+    }
+}
+
+
+@media screen and (max-width: 767.8px) {
+    
+    .header-box {
+        padding-top: 42px;
+        padding-bottom: 42px;
+        margin-bottom: 76px;
+    }
+
+    .custom-box {
+        padding-top: 18px;
+        padding-bottom: 18px;
+    }
+
+    .seo-cont {
+        margin-left: 16px;
+    }
+
+    .price {
+        margin-left: 12px;
+      }
+
+      .form-check {
+        margin-left: 62px;
+    }
+
+    .custom-H4 {
+        margin-right: 90px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    
+    .seo-cont {
+        margin-left: 6px;
+    }
+
+    .price {
+        margin-left: 6px;
+      }
+
+      .form-check {
+        margin-left: 38px;
+    }
+}
+
+
+
