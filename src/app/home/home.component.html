@@ -4,108 +4,113 @@
         <div class="col">
             <div class="brand">Frontender.itacademy</div>
             <div class="header-box">
-                <h1 class="cust-H1 mx-auto">Aconsegueix la millor qualitat</h1>
+                <h1 class="custom-H1 mx-auto">Aconsegueix la millor qualitat</h1>
             </div>
         </div>
     </div>
+  
+    <form [formGroup]="budgetForm">
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <div class="form-group custom-box mb-4">
 
-    <div class="row justify-content-center">
-        <div class="col-9">
-            <div class="custom-box mb-4">
-
-                <div class="col-5 seo-cont">
-                    <h4>
-                        Seo
-                    </h4>
-                    <p class="prod-description">
-                        Programació d'una web responsive <br>
-                        completa
-                    </p>
-                </div>
-
-                <div class="col-2">
-                    <h3 class="price">300<span class="euro">€</span></h3>
-                </div>
-
-                <div class="col-2">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Afegir
-                        </label>
+                    <div class="col-5 seo-cont">
+                        <h4>
+                            Seo
+                        </h4>
+                        <p class="prod-description">
+                            Programació d'una web responsive <br>
+                            completa
+                        </p>
                     </div>
-                </div>
 
-            </div>
-        </div>
-    </div>
-
-    <div class="row justify-content-center">
-        <div class="col-9">
-            <div class="custom-box mb-4">
-
-                <div class="col-5 seo-cont">
-                    <h4>
-                        Ads
-                    </h4>
-                    <p class="prod-description">
-                        Programació d'una web responsive <br>
-                        completa
-                    </p>
-                </div>
-
-                <div class="col-2">
-                    <h3 class="price">400<span class="euro">€</span></h3>
-                </div>
-
-                <div class="col-2">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Afegir
-                        </label>
+                    <div class="col-2">
+                        <h3 class="price">300<span class="euro">€</span></h3>
                     </div>
-                </div>
 
-            </div>
-        </div>
-    </div>
-
-    <div class="row justify-content-center">
-        <div class="col-9">
-            <div class="custom-box">
-
-                <div class="col-5 seo-cont">
-                    <h4>
-                        Web
-                    </h4>
-                    <p class="prod-description">
-                        Programació d'una web responsive <br>
-                        completa
-                    </p>
-                </div>
-
-                <div class="col-2">
-                    <h3 class="price">500<span class="euro">€</span></h3>
-                </div>
-
-                <div class="col-2">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Afegir
-                        </label>
+                    <div class="col-2">
+                        <div class="form-check"> 
+                            <input class="form-check-input" type="checkbox" formControlName="seo" (change)="onCheckboxChange($event, 300)" id="flexCheckSeo">
+                            <label class="form-check-label" for="flexCheckSeo">
+                                Afegir
+                            </label>
+                        </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="row">
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <div class="form-group custom-box mb-4">
+
+                    <div class="col-5 seo-cont">
+                        <h4>
+                            Ads
+                        </h4>
+                        <p class="prod-description">
+                            Programació d'una web responsive <br>
+                            completa
+                        </p>
+                    </div>
+
+                    <div class="col-2">
+                        <h3 class="price">400<span class="euro">€</span></h3>
+                    </div>
+
+                    <div class="col-2">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" formControlName="ads"  (change)="onCheckboxChange($event, 400)"
+                            id="flexCheckAds">
+                            <label class="form-check-label" for="flexCheckAds">
+                                Afegir
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <div class="form-group custom-box">
+
+                    <div class="col-5 seo-cont">
+                        <h4>
+                            Web
+                        </h4>
+                        <p class="prod-description">
+                            Programació d'una web responsive <br>
+                            completa
+                        </p>
+                    </div>
+
+                    <div class="col-2">
+                        <h3 class="price">500<span class="euro">€</span></h3>
+                    </div>
+
+                    <div class="col-2">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" formControlName="web"  (change)="onCheckboxChange($event, 500)"
+                            id="flexCheckWeb">
+                            <label class="form-check-label" for="flexCheckWeb">
+                                Afegir
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+   
+   <div class="row">
         <div class="col-12">
             <div class="preuFinal-container">
-                <h4 class="custom-H4">Preu Pressuposat:<span class="ms-3"></span>900<span class="euro ms-1">€</span></h4>
+                <h4 class="custom-H4">Preu Pressuposat:<span class="ms-3"></span>{{ preuPressuposat }}<span class="euro ms-1">€</span>
+                </h4>
             </div>
         </div>
     </div>

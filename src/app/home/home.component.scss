@@ -30,9 +30,9 @@ p, a, span, div {
     border-radius: 20px;
 }
 
-.cust-H1 {
+.custom-H1 {
     text-align: center;
-    width: 610px;
+    width: 640px;
     color: black;
     font-weight: bold;
     background-color: rgba(228, 220, 199, 0.7);
@@ -68,7 +68,7 @@ p, a, span, div {
 }
 
 .form-check-input {
-    border-color: black;
+    border-color: rgb(122, 115, 115);
 }
 
 .preuFinal-container {
@@ -104,6 +104,12 @@ p, a, span, div {
         padding-top: 42px;
         padding-bottom: 42px;
         margin-bottom: 76px;
+    }
+
+    .custom-H1 {
+        
+        font-size: 1.5rem;
+        width: 78%;
     }
 
     .custom-box {
