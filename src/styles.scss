@@ -1,0 +1,13 @@
+$custom-grey: rgb(102, 94, 94);
+
+h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; 
+}
+
+p, label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; 
+    font-size: 0.85rem;
+    color: $custom-grey
+}

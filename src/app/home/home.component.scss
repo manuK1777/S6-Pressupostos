@@ -1,17 +1,6 @@
 
-h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700; 
-}
-
-p, a, span, div {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600; 
-    font-size: 0.9rem;
-}
-
 .form-check-label, .prod-description {
-    color: rgb(122, 115, 115);
+    color: rgb(102, 94, 94);
 }
 
 .brand {
@@ -43,6 +32,8 @@ p, a, span, div {
 .custom-box {
     display: flex;
     flex-direction: row;
+   position: relative;
+  //  overflow: hidden;
     align-items: center;
     background-color: white;
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
@@ -67,8 +58,15 @@ p, a, span, div {
     margin-left: 120px;
 }
 
+.form-check-input:checked { 
+    background-color: rgb(55, 161, 41);
+    border-color: rgb(55, 161, 41);
+    box-shadow: none;
+}
+
 .form-check-input {
-    border-color: rgb(122, 115, 115);
+    color: rgb(102, 94, 94);
+    border: 1px solid rgb(160, 150, 150);
 }
 
 .preuFinal-container {
@@ -149,5 +147,28 @@ p, a, span, div {
     }
 }
 
+.app-panel-container {
+    display: flex;
+    margin-top: 180px;
+    margin-left: 335px;
+    position: absolute;
+  // bottom: 0;
+   //right: 0;
+}
 
 
+
+.form-check-input:focus {
+    box-shadow: none;
+}
+
+.border-green {
+   // background-color: rgb(55, 161, 41);
+   // display: inline-block;
+   // max-height: 300px;
+  //position: relative;
+    //padding-top: -440px;
+   // padding-bottom: 78px;
+    padding-bottom: 100px;
+    border-color: rgb(55, 161, 41);
+}

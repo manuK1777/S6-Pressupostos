@@ -1,23 +1,31 @@
 import { Component } from '@angular/core';
+
 import {
   ReactiveFormsModule,
   FormGroup,
   FormBuilder,
   FormControl,
 } from '@angular/forms';
+
 import { CommonModule, JsonPipe } from '@angular/common';
+import { PanelComponent } from "../panel/panel.component";
 
 @Component({
   selector: 'app-home',
-  template: '',
+  template: '{{seoPrice}}, {{adsPrice}}, {{webPrice}}',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, JsonPipe],
+  imports: [ReactiveFormsModule, CommonModule, JsonPipe, PanelComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {
-  budgetForm!: FormGroup;
 
+export class HomeComponent {
+ 
+  seoPrice: number = 300;
+  adsPrice: number = 400;
+  webPrice: number = 500;
+
+  budgetForm!: FormGroup;
   selectedValues: number[] = [];
   preuPressuposat: number = 0;
 

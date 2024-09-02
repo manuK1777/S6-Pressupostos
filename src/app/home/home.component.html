@@ -12,7 +12,7 @@
     <form [formGroup]="budgetForm">
         <div class="row justify-content-center">
             <div class="col-9">
-                <div class="form-group custom-box mb-4">
+                <div class="form-control custom-box mb-4">
 
                     <div class="col-5 seo-cont">
                         <h4>
@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="col-2">
-                        <h3 class="price">300<span class="euro">€</span></h3>
+                        <h3 class="price">{{seoPrice}}<span class="euro">€</span></h3>
                     </div>
 
                     <div class="col-2">
@@ -43,7 +43,7 @@
 
         <div class="row justify-content-center">
             <div class="col-9">
-                <div class="form-group custom-box mb-4">
+                <div class="form-control custom-box mb-4">
 
                     <div class="col-5 seo-cont">
                         <h4>
@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="col-2">
-                        <h3 class="price">400<span class="euro">€</span></h3>
+                        <h3 class="price">{{adsPrice}}<span class="euro">€</span></h3>
                     </div>
 
                     <div class="col-2">
@@ -75,7 +75,7 @@
 
         <div class="row justify-content-center">
             <div class="col-9">
-                <div class="form-group custom-box">
+                <div class="form-control custom-box" [ngClass]="{'border-green': budgetForm.get('web')?.value}">
 
                     <div class="col-5 seo-cont">
                         <h4>
@@ -88,7 +88,7 @@
                     </div>
 
                     <div class="col-2">
-                        <h3 class="price">500<span class="euro">€</span></h3>
+                        <h3 class="price">{{webPrice}}<span class="euro">€</span></h3>
                     </div>
 
                     <div class="col-2">
@@ -99,6 +99,10 @@
                                 Afegir
                             </label>
                         </div>
+                    </div>
+
+                    <div class="app-panel-container" *ngIf="budgetForm.get('web')?.value">
+                        <app-panel></app-panel>
                     </div>
 
                 </div>
