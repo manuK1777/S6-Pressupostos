@@ -1,34 +1,30 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BudgetService {
+  services: number[] = [];
+  servicesBudget: number = 0;
+  webPrice: number = 0;
 
-  selectedServices: number[] = [];
-  pressupost: number = 0;
+  constructor() {}
 
-  constructor() { }
+  totalServices(selectedValues: number[]):number {
+    return selectedValues.reduce(
+      (accumulator: number, currentValue: number) => {
+        return (accumulator + currentValue);
+      },
+      0
+    );
+  }
 
-  // pressupost: number = this.selectedServices.reduce(
-  //   (accumulator: number, currentValue: number) => {
-  //     return accumulator + currentValue;
-  //   },0);
+  getWebPrice(): number {
+    return this.webPrice;
+  }
 
-    priceServices(services: number[]) {
-
-      this.pressupost = this.selectedServices.reduce(
-        (accumulator: number, currentValue: number) => {
-          return accumulator + currentValue;
-        },0);
-      }
-     // return this.pressupost + (numPages * numLang * 30);
-    
-
-    priceWebExtra(numPages: number, numLang: number) {
-
-      return (numPages * numLang * 30);
-    }
-
-
+  totalWebPrice(numPages: number, numLang: number) {
+    this.webPrice = numPages * numLang * 30;
+    return this.webPrice;
+  }
 }

@@ -9,6 +9,7 @@ import {
 
 import { CommonModule, JsonPipe } from '@angular/common';
 import { PanelComponent } from "../panel/panel.component";
+import { BudgetService } from '../services/budget.service';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +22,8 @@ import { PanelComponent } from "../panel/panel.component";
 
 export class HomeComponent {
  
+  webPriceInput: number = 0;
+
   seoPrice: number = 300;
   adsPrice: number = 400;
   webPrice: number = 500;
@@ -29,7 +32,7 @@ export class HomeComponent {
   selectedValues: number[] = [];
   preuPressuposat: number = 0;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private budgetService: BudgetService) {
     this.budgetForm = this.fb.group({
       seo: [false],
       ads: [false],
@@ -37,23 +40,28 @@ export class HomeComponent {
     });
   }
 
+  updatePreuPressuposat(webPriceInput: number): void {
+   
+    this.webPriceInput = webPriceInput;
+    this.preuPressuposat = this.budgetService.totalServices(this.selectedValues);
+    this.preuPressuposat = this.preuPressuposat + this.webPriceInput;    
+  }
+
   onCheckboxChange(event: Event, value: number) {
     const isChecked = (event.target as HTMLInputElement).checked;
 
     if (isChecked) {
-      this.selectedValues.push(value);
+      this.selectedValues.push(value); 
     } else {
-      const index = this.selectedValues.indexOf(value);
+      const index = this.selectedValues.indexOf(value);    
       if (index > -1) {
         this.selectedValues.splice(index, 1);
       }
     }
+ 
+    if (this.budgetForm.get('web')?.value === false) {
+      this.webPriceInput = 0;}
 
-    this.preuPressuposat = this.selectedValues.reduce(
-      (accumulator, currentValue) => {
-        return accumulator + currentValue;
-      },
-      0
-    );
-  }
+    this.updatePreuPressuposat(this.webPriceInput);
+   }
 }

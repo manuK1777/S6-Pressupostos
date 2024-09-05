@@ -2,16 +2,16 @@
 <div class="container">
   <form [formGroup]="budgetForm">
     <div class="row">
-        <div class="col">
+        <div class="col custom-boxes-box">
             <div class="d-flex cust-box1"><p class="custom-paragraph">Nombre de pàgines</p>
-                <span><button class="op-box-btn"><span class="op-box" (click)="decrementPages()">-</span></button>
-                <input class="num-box" type="number" formControlName="numPages" [(ngModel)]="numPages"/>
-                <button class="op-box-btn"><span class="op-box" (click)="incrementPages()">+</span></button></span>
+                <div class="d-flex"><button class="op-box-btn"><span class="op-box" (click)="decrementPages()">-</span></button>
+                <input class="num-box" type="number" formControlName="numPages"/>
+                <button class="op-box-btn"><span class="op-box" (click)="incrementPages()">+</span></button></div>
             </div>
             <div class="d-flex cust-box2"><p class="custom-paragraph">Nombre de llenguatges</p>
-                <span><button class="op-box-btn"><span class="op-box" (click)="decrementLang()">-</span></button>
-                <input class="num-box" type="number" formControlName="numLang" [(ngModel)]="numLang"/>
-                <button class="op-box-btn"><span class="op-box" (click)="incrementLang()">+</span></button></span>
+                <div class="d-flex"><button class="op-box-btn"><span class="op-box" (click)="decrementLang()">-</span></button>
+                <input class="num-box" type="number" formControlName="numLang"/>
+                <button class="op-box-btn"><span class="op-box" (click)="incrementLang()">+</span></button></div>
             </div>
         </div>
     </div>

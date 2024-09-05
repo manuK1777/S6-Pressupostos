@@ -9,7 +9,6 @@
 }
 
 .header-box {
-    //background-color: #eedd9c;
     background-image: url("../../assets/bg-3.svg");
     opacity: 0.8;
     margin-top: 25px;
@@ -25,15 +24,12 @@
     color: black;
     font-weight: bold;
     background-color: rgba(228, 220, 199, 0.7);
-   // opacity: 0.8;
-    //font-size: 1.9rem
 }
 
 .custom-box {
     display: flex;
     flex-direction: row;
-   position: relative;
-  //  overflow: hidden;
+    position: relative;
     align-items: center;
     background-color: white;
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
@@ -42,12 +38,12 @@
     border-radius: 20px;
 }
 
-.seo-cont {
-    margin-left: 52px;
+.prod-cont {
+    margin-left: 22px;
 }
 
 .price {
-  margin-left: 52px;
+  margin-left: 62px;
 }
 
 .euro {
@@ -55,7 +51,7 @@
 }
 
 .form-check {
-    margin-left: 120px;
+    margin-left: 158px;
 }
 
 .form-check-input:checked { 
@@ -152,8 +148,6 @@
     margin-top: 180px;
     margin-left: 335px;
     position: absolute;
-  // bottom: 0;
-   //right: 0;
 }
 
 
@@ -163,12 +157,6 @@
 }
 
 .border-green {
-   // background-color: rgb(55, 161, 41);
-   // display: inline-block;
-   // max-height: 300px;
-  //position: relative;
-    //padding-top: -440px;
-   // padding-bottom: 78px;
     padding-bottom: 100px;
     border-color: rgb(55, 161, 41);
 }

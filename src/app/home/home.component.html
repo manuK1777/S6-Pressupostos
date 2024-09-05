@@ -14,7 +14,7 @@
             <div class="col-9">
                 <div class="form-control custom-box mb-4">
 
-                    <div class="col-5 seo-cont">
+                    <div class="col-5 prod-cont">
                         <h4>
                             Seo
                         </h4>
@@ -45,7 +45,7 @@
             <div class="col-9">
                 <div class="form-control custom-box mb-4">
 
-                    <div class="col-5 seo-cont">
+                    <div class="col-5 prod-cont">
                         <h4>
                             Ads
                         </h4>
@@ -77,7 +77,7 @@
             <div class="col-9">
                 <div class="form-control custom-box" [ngClass]="{'border-green': budgetForm.get('web')?.value}">
 
-                    <div class="col-5 seo-cont">
+                    <div class="col-5 prod-cont">
                         <h4>
                             Web
                         </h4>
@@ -102,7 +102,7 @@
                     </div>
 
                     <div class="app-panel-container" *ngIf="budgetForm.get('web')?.value">
-                        <app-panel></app-panel>
+                        <app-panel (webPriceInputChanged)="updatePreuPressuposat($event);"></app-panel>
                     </div>
 
                 </div>

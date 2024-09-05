@@ -23,7 +23,6 @@ $custom-grey: rgb(173, 169, 169);
     width: 50px;
     height: 30px;
     text-align: center;
-   // padding: 3px -6px 1px -6px;
     justify-content: center;
 }
 
@@ -45,10 +44,43 @@ input[type=number] {
     line-height: 8px;
     width: 12px;
     height: 13px;
-    //margin-bottom: 22px;
 }
 
 .op-box-btn {
     background-color: transparent;
     border: none;
+}
+
+@media screen and (max-width: 991.8px) {
+    
+    .custom-boxes-box {
+        margin-left: -144px;
+    }
+
+    .custom-paragraph {
+        margin-right: 6px;
+    }
+}
+
+@media screen and (max-width: 767.8px) {
+    
+    .custom-boxes-box {
+        margin-left: -258px;
+    }
+
+    .custom-paragraph {
+        margin-right: 6px;
+    }
+}
+
+@media screen and (max-width: 538px) {
+
+    .custom-boxes-box {
+        margin-left: -335px;
+        margin-top: 22px;
+    }
+
+    .custom-paragraph {
+        margin-right: 6px;
+    }
 }
