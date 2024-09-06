@@ -1,1 +1,21 @@
-<p>modal works!</p>
+
+ <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true" [ngClass]="{'show': modalStatus}">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header justify-content-center border-0">
+          <h1 class="modal-title fs-5" id="helpModalLabel">
+            <span *ngIf="helpModalType === 'pages'">Número de pàgines</span>
+            <span *ngIf="helpModalType === 'languages'">Número de llenguatges</span></h1>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="helpModalType === 'pages'" class="text-center">
+            Afegeix el número de pàgines que tindrà el teu projecte.
+          </div>      
+          <div *ngIf="helpModalType === 'languages'" class="text-center">
+            Afegeix les llenguatges que tindrà el teu projecte.<br>
+            El cost de cada llenguatge és de €30 per pàgina.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

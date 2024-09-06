@@ -1,11 +1,13 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BudgetService } from '../services/budget.service';
+import { HelpModalService } from '../services/help-modal.service';
+import { ModalComponent } from "../shared/modal/modal.component";
 
 @Component({
   selector: 'app-panel',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule, ModalComponent],
   templateUrl: './panel.component.html',
   styleUrl: './panel.component.scss',
 })
@@ -16,16 +18,23 @@ export class PanelComponent {
   numPages: number = 0;
   numLang: number = 0;
   webPrice: number = 0;
+  helpModalType: string = "";
   
+  @Input() webPriceInput!: number;
+  @Output() webPriceInputChanged = new EventEmitter<number>();
+  @Output() modalTextEvent = new EventEmitter<string>();
+  
+  openModal(type: string) {
+   this.helpModalType = type;
+   this.modalTextEvent.emit(this.helpModalType);
+  }
+
   ngOnInit(): void {
     this.budgetForm.get('numPages')?.setValue(this.numPages);
     this.budgetForm.get('numLang')?.setValue(this.numLang);
   }
 
-  @Input() webPriceInput!: number;
-  @Output() webPriceInputChanged = new EventEmitter<number>();
-
-  constructor(private budgetService: BudgetService) {   
+  constructor (private budgetService: BudgetService, private HelpModalService: HelpModalService ) {   
     this.budgetForm = new FormGroup({
       numPages: new FormControl(this.numPages),
       numLang: new FormControl(this.numLang),

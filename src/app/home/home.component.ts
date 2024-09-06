@@ -4,7 +4,6 @@ import {
   ReactiveFormsModule,
   FormGroup,
   FormBuilder,
-  FormControl,
 } from '@angular/forms';
 
 import { CommonModule, JsonPipe } from '@angular/common';

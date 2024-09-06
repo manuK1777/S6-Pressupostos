@@ -8,11 +8,8 @@ $custom-grey: rgb(173, 169, 169);
 }
 
 .cust-box2 {
-    margin-top: 12px;
-}
-
-.cust-box1 {
-    margin-left: 27px;
+    margin-top: 6px;
+    margin-left: -27px;
 }
 
 .num-box {
@@ -34,6 +31,26 @@ input[type=number]::-webkit-outer-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.mod-box {
+    color: rgb(92, 84, 84);
+    display: inline-block;
+    border: 1px solid rgb(71, 66, 66);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 8px;
+    width: 15px;
+    height: 16px;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+}
+
+.mod-box-btn {
+    background-color: transparent;
+    border: none;
+    margin-right: 4px;
+}
+
 
 .op-box {
     color: $custom-grey;
@@ -82,5 +99,9 @@ input[type=number] {
 
     .custom-paragraph {
         margin-right: 6px;
+    }
+
+    .mod-box-btn {
+        margin-right: 0px;
     }
 }

@@ -1,0 +1,34 @@
+$custom-grey: rgb(102, 94, 94);
+
+.modal-content {
+    border-radius: 22px;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; 
+    margin-top: 52px;
+}
+
+.modal-body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; 
+    font-size: 0.85rem;
+    color: $custom-grey
+}
+
+.modal-body {
+    margin-bottom: 75px;
+}
+
+@media screen and (max-width: 767.8px) {
+    
+    .modal-content {
+        width: 80%;
+        height: 80%;
+    }
+
+    .modal-dialog {
+        justify-content: center;
+    }
+}
