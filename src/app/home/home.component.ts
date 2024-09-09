@@ -4,6 +4,7 @@ import {
   ReactiveFormsModule,
   FormGroup,
   FormBuilder,
+  Validators
 } from '@angular/forms';
 
 import { CommonModule, JsonPipe } from '@angular/common';
@@ -36,8 +37,17 @@ export class HomeComponent {
       seo: [false],
       ads: [false],
       web: [false],
+
+      contactDetails: this.fb.group({
+        name: ['', Validators.required],
+        phone: ['', [Validators.required, Validators.pattern(/^[0-9]+$/)]],
+        email: ['', [Validators.required, Validators.email]],
+      }),
     });
   }
+
+  //this.budgetForm.get('contactDetails').valid, para chequear la validez de
+  //los datos introducidos en el formulario antes de guardar.
 
   updatePreuPressuposat(webPriceInput: number): void {
    

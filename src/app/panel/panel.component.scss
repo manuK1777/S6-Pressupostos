@@ -68,6 +68,26 @@ input[type=number] {
     border: none;
 }
 
+// .custom-boxes-box {
+//     margin-left: 93px;
+// }
+
+
+@media screen and (max-width: 1400px) {
+
+    .custom-boxes-box {
+        margin-left: 96px;
+    }
+}
+
+@media screen and (max-width: 1199.8px) {
+
+    .custom-boxes-box {
+        margin-left: 16px;
+    }
+}
+
+
 @media screen and (max-width: 991.8px) {
     
     .custom-boxes-box {
@@ -105,3 +125,4 @@ input[type=number] {
         margin-right: 0px;
     }
 }
+
