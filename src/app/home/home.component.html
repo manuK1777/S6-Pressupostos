@@ -149,7 +149,7 @@
                        </div>
 
                        <div class="col-3 px-0">
-                            <button type="submit" class="btn btn-primary cust-btn">Sol·licitar pressupost <span>&#8702;</span></button>
+                            <button type="submit" class="btn btn-primary cust-btn" [disabled]="formIsInvalid" (click)="onFormSubmit()">Sol·licitar pressupost <span>&#8702;</span></button>
                        </div>
 
                     </div>

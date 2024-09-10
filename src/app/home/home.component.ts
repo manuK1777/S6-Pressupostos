@@ -4,11 +4,11 @@ import {
   ReactiveFormsModule,
   FormGroup,
   FormBuilder,
-  Validators
+  Validators,
 } from '@angular/forms';
 
 import { CommonModule, JsonPipe } from '@angular/common';
-import { PanelComponent } from "../panel/panel.component";
+import { PanelComponent } from '../panel/panel.component';
 import { BudgetService } from '../services/budget.service';
 
 @Component({
@@ -19,9 +19,7 @@ import { BudgetService } from '../services/budget.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-
 export class HomeComponent {
- 
   webPriceInput: number = 0;
 
   seoPrice: number = 300;
@@ -31,6 +29,7 @@ export class HomeComponent {
   budgetForm!: FormGroup;
   selectedValues: number[] = [];
   preuPressuposat: number = 0;
+  formIsInvalid: boolean = true;
 
   constructor(private fb: FormBuilder, private budgetService: BudgetService) {
     this.budgetForm = this.fb.group({
@@ -46,31 +45,65 @@ export class HomeComponent {
     });
   }
 
-  //this.budgetForm.get('contactDetails').valid, para chequear la validez de
-  //los datos introducidos en el formulario antes de guardar.
+  ngOnInit(): void {
+    this.budgetForm.get('contactDetails')?.statusChanges.subscribe((status) => {
+      this.formIsInvalid = status === 'INVALID';
+    });
+  }
 
   updatePreuPressuposat(webPriceInput: number): void {
-   
     this.webPriceInput = webPriceInput;
-    this.preuPressuposat = this.budgetService.totalServices(this.selectedValues);
-    this.preuPressuposat = this.preuPressuposat + this.webPriceInput;    
+    this.preuPressuposat = this.budgetService.totalServices(
+      this.selectedValues
+    );
+    this.preuPressuposat = this.preuPressuposat + this.webPriceInput;
   }
 
   onCheckboxChange(event: Event, value: number) {
     const isChecked = (event.target as HTMLInputElement).checked;
 
     if (isChecked) {
-      this.selectedValues.push(value); 
+      this.selectedValues.push(value);
     } else {
-      const index = this.selectedValues.indexOf(value);    
+      const index = this.selectedValues.indexOf(value);
       if (index > -1) {
         this.selectedValues.splice(index, 1);
       }
     }
- 
+
     if (this.budgetForm.get('web')?.value === false) {
-      this.webPriceInput = 0;}
+      this.webPriceInput = 0;
+    }
 
     this.updatePreuPressuposat(this.webPriceInput);
-   }
+  }
+
+
+  getSeoValue() {
+    return this.budgetForm.get('seo')?.value;
+  }
+
+  getAdsValue() {
+    return this.budgetForm.get('ads')?.value;
+  }
+
+  getWebValue() {
+    return this.budgetForm.get('web')?.value;
+  }
+
+
+  onFormSubmit(): void {
+    if (this.formIsInvalid === false) {
+     
+      const contactDetails = this.budgetForm.get('contactDetails')?.value;
+
+      const seoExists = this.getSeoValue();
+      const adsExists = this.getAdsValue();
+      const webExists = this.getWebValue();
+
+      this.budgetService.savePressupostInfo(contactDetails, seoExists, adsExists, webExists, this.preuPressuposat);
+
+      alert('Pressupost enviat correctament');
+    } 
+  }
 }
