@@ -1,0 +1,165 @@
+$custom-grey: rgb(173, 169, 169);
+
+.dashed-line {
+    margin-top: 50px;
+    margin-bottom: 72px;
+    border-top: 2px dashed $custom-grey;
+    width: 100%;
+    height: 0;
+}
+
+.cust-budget-cont {
+    margin-bottom: 26px;
+}
+
+.cust-box-head-Pressupostos {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    align-items: center;
+    background-color: white;
+}
+
+.cust-h4-pressupostos {
+    margin-left: 12px;
+    font-size: 1.3rem;
+    white-space: nowrap;
+}
+
+.navbar {
+    margin-top: 52px;
+    flex-wrap: nowrap;
+    margin-right: 52px;
+}
+
+.nav-link,
+p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: rgb(139, 133, 133);
+}
+
+.cust-list {
+    display: flex;
+    margin-left: 20px;
+    margin-top: 14px;
+}
+
+.cust-form-ctrl {
+     width: 90%;
+     height: 100%;
+    padding-top: 0;
+    border-right: none;
+}
+
+.form-control.cust-form-ctrl:focus {
+    outline: none; 
+    box-shadow: none; 
+    border-color: rgb(238, 226, 226); 
+  }
+
+.search-icon-img {
+    opacity: 60%;
+    margin-bottom: 6px;
+}
+
+#search-icon {
+    padding: 0;
+    background-color: transparent;
+    padding-right: 6px;
+}
+
+.input-group {
+    margin-top: 15px;
+}
+
+.input-group-text .search-icon {
+    display: block;
+    margin: auto;
+}
+
+.caret-icon {
+    opacity: 50%;
+    margin-bottom: 6px;
+    margin-left: -20px;
+}
+
+.nav-link:active {
+    color: rgb(59, 57, 57)
+}
+
+li.nav-item::marker {
+    list-style-type: none;
+}
+
+.custom-box {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-top: 1px solid rgb(245, 240, 240);
+ }
+
+.pers-info-cont {
+    margin-left: 22px;
+}
+
+.total-h6 {
+    color: rgb(116, 110, 110);
+    margin-right: 12px;
+}
+
+.euro {
+    font-size: 1rem;
+}
+
+.cust-serv-cont {
+    margin-top: 22px;
+    margin-right: 112px;
+}
+
+.serveis-h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: rgb(49, 46, 46);
+}
+
+li {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: rgb(124, 116, 116);
+}
+
+@media screen and (max-width: 991.8px) {
+
+    .cust-h4-pressupostos {
+        font-size: 1.2rem;
+        margin-left: 12px;
+        margin-bottom: 20px;
+    }
+
+    .cust-form-ctrl {
+        margin-left: 0px;
+    }
+
+    .cust-serv-cont {
+        margin-right: 90px;
+    }
+
+    .navbar {
+       margin-left: -222px;
+    }
+}
+
+@media screen and (max-width: 767.8px) {
+
+    .cust-serv-cont {
+        margin-right: 50px;
+        margin-left: 22px;
+    }
+
+    .pers-info-cont {
+        margin-left: 10px;
+    }
+}

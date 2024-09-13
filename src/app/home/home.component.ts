@@ -10,12 +10,14 @@ import {
 import { CommonModule, JsonPipe } from '@angular/common';
 import { PanelComponent } from '../panel/panel.component';
 import { BudgetService } from '../services/budget.service';
+import { BudgetListComponent } from "../budget-list/budget-list.component";
+
 
 @Component({
   selector: 'app-home',
   template: '{{seoPrice}}, {{adsPrice}}, {{webPrice}}',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, JsonPipe, PanelComponent],
+  imports: [ReactiveFormsModule, CommonModule, JsonPipe, PanelComponent, BudgetListComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
