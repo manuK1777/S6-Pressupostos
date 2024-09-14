@@ -47,8 +47,8 @@ p {
 }
 
 .cust-form-ctrl {
-     width: 90%;
-     height: 100%;
+    width: 90%;
+    height: 100%;
     padding-top: 0;
     border-right: none;
 }
@@ -99,8 +99,15 @@ li.nav-item::marker {
     border-top: 1px solid rgb(245, 240, 240);
  }
 
+ .cust-h4-name {
+    font-size: 1.2rem;
+    margin-top: 8px;
+    margin-bottom: 0px;
+ }
+
 .pers-info-cont {
     margin-left: 22px;
+    margin-right: 2px;
 }
 
 .total-h6 {
@@ -115,6 +122,10 @@ li.nav-item::marker {
 .cust-serv-cont {
     margin-top: 22px;
     margin-right: 112px;
+}
+
+li {
+    white-space: nowrap;
 }
 
 .serveis-h6 {

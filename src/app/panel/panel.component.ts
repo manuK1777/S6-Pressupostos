@@ -20,6 +20,7 @@ export class PanelComponent {
   webPrice: number = 0;
   helpModalType: string = "";
   
+
   @Input() webPriceInput!: number;
   @Output() webPriceInputChanged = new EventEmitter<number>();
   @Output() modalTextEvent = new EventEmitter<string>();

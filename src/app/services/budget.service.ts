@@ -1,16 +1,70 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
+
+interface BudgetItem {
+  contactDetails: {
+    name: string;
+    email: string;
+    phone: string;
+  };
+  seo: boolean;
+  ads: boolean;
+  web: boolean;
+  preuPressuposat: number;
+  numPages?: number;
+  numLang?: number;
+}
+
+interface BudgetList {
+  budgets: BudgetItem[];
+}
 
 @Injectable({
   providedIn: 'root',
 })
+
 export class BudgetService {
   services: number[] = [];
   servicesBudget: number = 0;
   webPrice: number = 0;
-  pressupostos: Object[] = [];
+  pressupostos: BudgetList = {
+    budgets: []
+  };
   numPages: number = 0;
   numLang: number = 0;
     
+  private budgetsSignal = signal<BudgetItem[]>(this.pressupostos.budgets);
+
+  getBudgets() {
+    return this.budgetsSignal();
+  }
+
+  addBudget(budget: BudgetItem) {
+    this.pressupostos.budgets.push(budget);
+    this.budgetsSignal.set([...this.budgetsSignal(), budget])
+  }
+ 
+  removeBudget(index: number) {
+    this.pressupostos.budgets.splice(index, 1);
+    this.budgetsSignal.set(this.budgetsSignal().filter((_, i) => i !== index));
+  }
+
+  savePressupostInfo(contactDetails: any, seo: boolean, ads: boolean, web: boolean, preuPressuposat: number): void {
+
+    const budgetItem: BudgetItem = {
+      contactDetails,
+      seo,
+      ads,
+      web,
+      preuPressuposat,
+      numPages: this.numPages,
+      numLang: this.numLang,
+    };
+  
+    this.addBudget(budgetItem);
+    console.log(this.pressupostos);
+    
+  } 
+
   totalServices(selectedValues: number[]):number {
     return selectedValues.reduce(
       (accumulator: number, currentValue: number) => {
@@ -20,10 +74,6 @@ export class BudgetService {
     );
   }
 
-  // getWebPrice(): number {
-  //   return this.webPrice;
-  // } Quién lo usa?
-
   totalWebPrice(numPages: number, numLang: number) {
     this.webPrice = numPages * numLang * 30;
     this.numPages = numPages;
@@ -31,35 +81,4 @@ export class BudgetService {
        
     return this.webPrice;
   }
-
-  savePressupostInfo(Object: Object, seo: boolean, ads: boolean, web: boolean, preuPressuposat: number) {
-
-    this.pressupostos.push(Object);
-
-    if (seo) {
-      this.pressupostos.push({ seo });
-    }
-
-    if (ads) {
-      this.pressupostos.push({ ads });
-    }
-
-    if (web) {
-      this.pressupostos.push({ web });
-    }
-
-    if (!web) {
-      this.numLang = 0;
-      this.numPages = 0;
-    }
-   
-   if (web) {
-      this.pressupostos.push({ numPages: this.numPages })
-      this.pressupostos.push({ numLang: this.numLang })
-   }
-
-    this.pressupostos.push({ preuPressuposat : preuPressuposat })
-
-    console.log(`Array pressupostos:`, JSON.stringify(this.pressupostos));
-  } 
 }

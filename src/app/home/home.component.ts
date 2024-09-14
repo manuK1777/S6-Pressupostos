@@ -22,6 +22,7 @@ import { BudgetListComponent } from "../budget-list/budget-list.component";
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
+
   webPriceInput: number = 0;
 
   seoPrice: number = 300;
@@ -61,6 +62,7 @@ export class HomeComponent {
     this.preuPressuposat = this.preuPressuposat + this.webPriceInput;
   }
 
+ 
   onCheckboxChange(event: Event, value: number) {
     const isChecked = (event.target as HTMLInputElement).checked;
 
@@ -106,6 +108,9 @@ export class HomeComponent {
       this.budgetService.savePressupostInfo(contactDetails, seoExists, adsExists, webExists, this.preuPressuposat);
 
       alert('Pressupost enviat correctament');
+
+      this.budgetForm.reset()
+      this.preuPressuposat = 0;
     } 
   }
 }
