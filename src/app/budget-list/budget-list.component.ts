@@ -15,4 +15,29 @@ export class BudgetListComponent {
   constructor(private budgetService: BudgetService) {
     this.budgets = this.budgetService.getBudgets();
   }
+
+  isSelectedDate = false;
+  isSelectedImport = false;
+  isSelectedName = false;
+
+  sortByDate() {
+    this.budgetService.sortByDate();
+    this.isSelectedDate = true;
+    this.isSelectedImport = false;
+    this.isSelectedName = false;
+  }
+
+  sortByAmount() {
+    this.budgetService.sortByAmount();
+    this.isSelectedImport = true;
+    this.isSelectedDate = false;
+    this.isSelectedName = false;
+  }
+
+  sortByName() {
+    this.budgetService.sortByName();
+    this.isSelectedName = true;
+    this.isSelectedDate = false;
+    this.isSelectedImport = false;
+  }
 }

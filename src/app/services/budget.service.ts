@@ -12,12 +12,12 @@ interface BudgetItem {
   preuPressuposat: number;
   numPages?: number;
   numLang?: number;
+  date: Date
 }
 
 interface BudgetList {
   budgets: BudgetItem[];
 }
-
 @Injectable({
   providedIn: 'root',
 })
@@ -26,12 +26,44 @@ export class BudgetService {
   services: number[] = [];
   servicesBudget: number = 0;
   webPrice: number = 0;
+  // pressupostos: BudgetList = {
+  //   budgets: []
+  // };
   pressupostos: BudgetList = {
-    budgets: []
+    budgets: [
+      {
+        contactDetails: {
+          name: 'John Wayne',
+          email: 'john@example.com',
+          phone: '686764323'
+        },
+        seo: true,
+        ads: false,
+        web: true,
+        preuPressuposat: 1000,
+        numPages: 5,
+        numLang: 2,
+        date: new Date('2022-01-01')
+      },
+      {
+        contactDetails: {
+          name: 'Alyssa Perry',
+          email: 'alyssa@example.com',
+          phone: '64434212'
+        },
+        seo: false,
+        ads: true,
+        web: false,
+        preuPressuposat: 500,
+        numPages: 3,
+        numLang: 1,
+        date: new Date('2022-02-01')
+      },
+    ]
   };
-  numPages: number = 0;
-  numLang: number = 0;
-    
+  numPages: number = 1;
+  numLang: number = 1;
+
   private budgetsSignal = signal<BudgetItem[]>(this.pressupostos.budgets);
 
   getBudgets() {
@@ -48,7 +80,7 @@ export class BudgetService {
     this.budgetsSignal.set(this.budgetsSignal().filter((_, i) => i !== index));
   }
 
-  savePressupostInfo(contactDetails: any, seo: boolean, ads: boolean, web: boolean, preuPressuposat: number): void {
+  savePressupostInfo(contactDetails: any, seo: boolean, ads: boolean, web: boolean, preuPressuposat: number, currentDate: Date): void {
 
     const budgetItem: BudgetItem = {
       contactDetails,
@@ -58,12 +90,27 @@ export class BudgetService {
       preuPressuposat,
       numPages: this.numPages,
       numLang: this.numLang,
+      date: currentDate
     };
   
     this.addBudget(budgetItem);
     console.log(this.pressupostos);
-    
   } 
+
+  // organize budgets ---------------------------------------
+
+  sortByDate() {
+    this.budgetsSignal.set(this.pressupostos.budgets.sort((a, b) => b.date.getTime() - a.date.getTime()));
+  }
+
+  sortByAmount() {
+    this.budgetsSignal.set(this.pressupostos.budgets.sort((a, b) => b.preuPressuposat - a.preuPressuposat));
+  }
+
+  sortByName() {
+    this.budgetsSignal.set(this.pressupostos.budgets.sort((a, b) => a.contactDetails.name.localeCompare(b.contactDetails.name)));
+  }
+
 
   totalServices(selectedValues: number[]):number {
     return selectedValues.reduce(
@@ -75,7 +122,7 @@ export class BudgetService {
   }
 
   totalWebPrice(numPages: number, numLang: number) {
-    this.webPrice = numPages * numLang * 30;
+    this.webPrice = ((numPages * numLang) * 30) - 30;
     this.numPages = numPages;
     this.numLang = numLang;
        

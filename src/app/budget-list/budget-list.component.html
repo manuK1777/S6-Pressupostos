@@ -4,58 +4,52 @@
             <div class="dashed-line"></div>
         </div>
     </div>
-    
+
     <div class="row justify-content-center">
         <div class="col-9">
-            <div class="cust-box-head-Pressupostos">
+            <div class="cust-box-head-Pressupostos mb-3">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-9">
                         <h4 class="cust-h4-pressupostos">
                             Pressupostos en curs:
                         </h4>
                     </div>
                 </div>
-    
-                <div class="row justify-content-end">
-                    <div class="col-9 px-0">
-                        <nav class="navbar">
-                            <form class="d-flex" role="search">
-    
-                                <div class="col-5">
-                                    <div class="input-group flex-nowrap">
-                                        <input class="form-control cust-form-ctrl" type="search" aria-label="Search">
-                                        <span class="input-group-text" id="search-icon">
-                                            <img class="search-icon-img" src="assets/search.svg" alt="Search icon"
-                                                width="13" height="13">
-                                        </span>
-                                    </div>
-                                </div>
-    
-                                <div class="col-4">
-                                    <ul class="list-unstyled cust-list">
-                                        <li class="nav-item list-inline-item ms-0 me-4">
-                                            <a class="nav-link" href="">Data</a>
-                                        </li>
-                                        <li class="nav-item list-inline-item me-4">
-                                            <a class="nav-link" href="">Import
-                                            </a>
-                                        </li>
-                                        <span class="me-2">
-                                            <img class="caret-icon" src="assets/caret-down.svg" alt="caret down" width="13"
-                                                height="13">
-                                        </span>
-                                        <li class="nav-item list-inline-item">
-                                            <a class="nav-link" href="">Nom</a>
-                                        </li>
-                                    </ul>
-                                </div>
-    
-                            </form>
-                        </nav>
+
+                <div class="row"> 
+                    <div class="col-9 px-0 cust-bar d-flex">
+
+                        <div class="col-5">
+                            <div class="input-group flex-nowrap">
+                                <input class="form-control cust-form-ctrl" type="search" aria-label="Search">
+                                <span class="input-group-text" id="search-icon">
+                                    <img class="search-icon-img" src="assets/search.svg" alt="Search icon" width="13"
+                                        height="13">
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="cust-btn-group">
+                                <button class="cust-btn ms-0 me-4" (click)="sortByDate()" [ngClass]="{'selected': isSelectedDate}">
+                                    Data
+                                </button>
+                                <button class="cust-btn me-4" (click)="sortByAmount()" [ngClass]="{'selected': isSelectedImport}">
+                                    Import
+                                </button>
+                                <span class="me-2">
+                                    <img class="caret-icon" src="assets/caret-down.svg" alt="caret down" width="13"
+                                        height="13">
+                                </span>
+                                <button class="cust-btn" (click)="sortByName()" [ngClass]="{'selected': isSelectedName}">
+                                    Nom
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
-    
                 </div>
-    
+
             </div>
         </div>
     </div>

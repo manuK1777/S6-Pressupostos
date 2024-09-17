@@ -15,8 +15,8 @@ import { ModalComponent } from "../shared/modal/modal.component";
 export class PanelComponent {
 
   budgetForm!: FormGroup;
-  numPages: number = 0;
-  numLang: number = 0;
+  numPages: number = 1;
+  numLang: number = 1;
   webPrice: number = 0;
   helpModalType: string = "";
   
@@ -59,7 +59,7 @@ export class PanelComponent {
   }
 
   decrementPages(): void {
-    if (this.numPages > 0) {
+    if (this.numPages > 1) {
       this.numPages--;
       this.budgetForm.get('numPages')?.setValue(this.numPages);
       this.webPrice = this.budgetService.totalWebPrice(this.numPages, this.numLang);
@@ -77,7 +77,7 @@ export class PanelComponent {
   }
 
   decrementLang(): void {
-    if (this.numLang > 0) {
+    if (this.numLang > 1) {
       this.numLang--;
       this.budgetForm.get('numLang')?.setValue(this.numLang);
       this.webPrice = this.budgetService.totalWebPrice(this.numPages, this.numLang);

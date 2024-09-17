@@ -105,11 +105,15 @@ export class HomeComponent {
       const adsExists = this.getAdsValue();
       const webExists = this.getWebValue();
 
-      this.budgetService.savePressupostInfo(contactDetails, seoExists, adsExists, webExists, this.preuPressuposat);
+      const currentDate = new Date();
+
+      this.budgetService.savePressupostInfo(contactDetails, seoExists, adsExists, webExists, this.preuPressuposat, currentDate);
 
       alert('Pressupost enviat correctament');
 
-      this.budgetForm.reset()
+      this.budgetForm.reset({ onlySelf: true, emitEvent: false });
+      this.selectedValues = [];
+      this.webPriceInput = 0;
       this.preuPressuposat = 0;
     } 
   }

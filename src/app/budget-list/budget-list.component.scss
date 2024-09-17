@@ -26,21 +26,22 @@ $custom-grey: rgb(173, 169, 169);
     white-space: nowrap;
 }
 
-.navbar {
+.cust-bar {
     margin-top: 52px;
     flex-wrap: nowrap;
-    margin-right: 52px;
 }
 
-.nav-link,
+.cust-btn,
 p {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 0.85rem;
     color: rgb(139, 133, 133);
+    border: none;
+    background-color: transparent;
 }
 
-.cust-list {
+.cust-btn-group {
     display: flex;
     margin-left: 20px;
     margin-top: 14px;
@@ -72,11 +73,16 @@ p {
 
 .input-group {
     margin-top: 15px;
+    flex-shrink: 0;
 }
 
 .input-group-text .search-icon {
     display: block;
     margin: auto;
+}
+
+.input-group-text {
+    flex-shrink: 0;
 }
 
 .caret-icon {
@@ -85,7 +91,7 @@ p {
     margin-left: -20px;
 }
 
-.nav-link:active {
+.selected {
     color: rgb(59, 57, 57)
 }
 
@@ -142,6 +148,13 @@ li {
     color: rgb(124, 116, 116);
 }
 
+@media screen and (max-width: 1199.8px) {
+
+    .cust-bar {
+        margin-left: 62px;
+     }
+}
+
 @media screen and (max-width: 991.8px) {
 
     .cust-h4-pressupostos {
@@ -158,12 +171,16 @@ li {
         margin-right: 90px;
     }
 
-    .navbar {
-       margin-left: -222px;
+    .cust-bar {
+       margin-left: -56px;
     }
 }
 
 @media screen and (max-width: 767.8px) {
+
+    .cust-form-ctrl {
+        min-width: 80px;
+      }
 
     .cust-serv-cont {
         margin-right: 50px;
@@ -173,4 +190,13 @@ li {
     .pers-info-cont {
         margin-left: 10px;
     }
+
+    .cust-bar {
+        margin-left: -166px;
+     }
+
+     .cust-btn-group {
+        margin-left: 42px;
+     }
 }
+
