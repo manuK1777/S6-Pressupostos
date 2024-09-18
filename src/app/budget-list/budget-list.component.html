@@ -21,10 +21,10 @@
 
                         <div class="col-5">
                             <div class="input-group flex-nowrap">
-                                <input class="form-control cust-form-ctrl" type="search" aria-label="Search">
+                                <input class="form-control cust-form-ctrl" type="search" aria-label="Search" [formControl]="searchTextControl">
                                 <span class="input-group-text" id="search-icon">
-                                    <img class="search-icon-img" src="assets/search.svg" alt="Search icon" width="13"
-                                        height="13">
+                                    <button class="search-name-btn" type="submit" (click)="sortByName(searchTextControl.value)"><img class="search-icon-img" src="assets/search.svg" alt="Search icon" width="13"
+                                        height="13"></button>
                                 </span>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                                     <img class="caret-icon" src="assets/caret-down.svg" alt="caret down" width="13"
                                         height="13">
                                 </span>
-                                <button class="cust-btn" (click)="sortByName()" [ngClass]="{'selected': isSelectedName}">
+                                <button class="cust-btn" (click)="sortByAlph()" [ngClass]="{'selected': isSelectedName}">
                                     Nom
                                 </button>
                             </div>
@@ -59,6 +59,7 @@
     <div class="col-9">
 
         <div class="custom-box mb-4" *ngFor="let budget of budgets">
+
             <div class="col-4 pers-info-cont">
                 <h4 class="cust-h4-name">
                     {{ budget.contactDetails.name}}
@@ -86,6 +87,7 @@
                 </h6>
                 <h3 class="price text-end">{{ budget.preuPressuposat }}<span class="euro">€</span></h3>
             </div>
+            
         </div>
 
     </div>

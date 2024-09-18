@@ -12,7 +12,7 @@ interface BudgetItem {
   preuPressuposat: number;
   numPages?: number;
   numLang?: number;
-  date: Date
+  date: Date;
 }
 
 interface BudgetList {
@@ -21,7 +21,6 @@ interface BudgetList {
 @Injectable({
   providedIn: 'root',
 })
-
 export class BudgetService {
   services: number[] = [];
   servicesBudget: number = 0;
@@ -35,7 +34,7 @@ export class BudgetService {
         contactDetails: {
           name: 'John Wayne',
           email: 'john@example.com',
-          phone: '686764323'
+          phone: '686764323',
         },
         seo: true,
         ads: false,
@@ -43,13 +42,13 @@ export class BudgetService {
         preuPressuposat: 1000,
         numPages: 5,
         numLang: 2,
-        date: new Date('2022-01-01')
+        date: new Date('2022-01-01'),
       },
       {
         contactDetails: {
           name: 'Alyssa Perry',
           email: 'alyssa@example.com',
-          phone: '64434212'
+          phone: '64434212',
         },
         seo: false,
         ads: true,
@@ -57,9 +56,9 @@ export class BudgetService {
         preuPressuposat: 500,
         numPages: 3,
         numLang: 1,
-        date: new Date('2022-02-01')
+        date: new Date('2022-02-01'),
       },
-    ]
+    ],
   };
   numPages: number = 1;
   numLang: number = 1;
@@ -72,16 +71,22 @@ export class BudgetService {
 
   addBudget(budget: BudgetItem) {
     this.pressupostos.budgets.push(budget);
-    this.budgetsSignal.set([...this.budgetsSignal(), budget])
+    this.budgetsSignal.set([...this.budgetsSignal(), budget]);
   }
- 
+
   removeBudget(index: number) {
     this.pressupostos.budgets.splice(index, 1);
     this.budgetsSignal.set(this.budgetsSignal().filter((_, i) => i !== index));
   }
 
-  savePressupostInfo(contactDetails: any, seo: boolean, ads: boolean, web: boolean, preuPressuposat: number, currentDate: Date): void {
-
+  savePressupostInfo(
+    contactDetails: any,
+    seo: boolean,
+    ads: boolean,
+    web: boolean,
+    preuPressuposat: number,
+    currentDate: Date
+  ): void {
     const budgetItem: BudgetItem = {
       contactDetails,
       seo,
@@ -90,42 +95,65 @@ export class BudgetService {
       preuPressuposat,
       numPages: this.numPages,
       numLang: this.numLang,
-      date: currentDate
+      date: currentDate,
     };
-  
+
     this.addBudget(budgetItem);
     console.log(this.pressupostos);
-  } 
-
-  // organize budgets ---------------------------------------
+  }
 
   sortByDate() {
-    this.budgetsSignal.set(this.pressupostos.budgets.sort((a, b) => b.date.getTime() - a.date.getTime()));
+    this.budgetsSignal.set(
+      this.pressupostos.budgets.sort(
+        (a, b) => b.date.getTime() - a.date.getTime()
+      )
+    );
   }
 
   sortByAmount() {
-    this.budgetsSignal.set(this.pressupostos.budgets.sort((a, b) => b.preuPressuposat - a.preuPressuposat));
+    this.budgetsSignal.set(
+      this.pressupostos.budgets.sort(
+        (a, b) => b.preuPressuposat - a.preuPressuposat
+      )
+    );
   }
 
-  sortByName() {
-    this.budgetsSignal.set(this.pressupostos.budgets.sort((a, b) => a.contactDetails.name.localeCompare(b.contactDetails.name)));
+  sortByAlph() {
+    this.budgetsSignal.set(
+      this.pressupostos.budgets.sort((a, b) =>
+        a.contactDetails.name.localeCompare(b.contactDetails.name)
+      )
+    );
   }
 
+  sortByName(searchText: string) {
+    
+    const foundBudgets = this.pressupostos.budgets.filter((budget) => {
+      return budget.contactDetails.name.toLowerCase().includes(searchText.toLocaleLowerCase());
+    });
 
-  totalServices(selectedValues: number[]):number {
+    if (foundBudgets.length > 0) {
+      this.budgetsSignal.set(foundBudgets);
+    } else {
+      this.budgetsSignal.set(this.pressupostos.budgets)
+      alert("Pressupost no trobat")
+    }
+  }
+
+  totalServices(selectedValues: number[]): number {
     return selectedValues.reduce(
       (accumulator: number, currentValue: number) => {
-        return (accumulator + currentValue);
+        return accumulator + currentValue;
       },
       0
     );
   }
 
   totalWebPrice(numPages: number, numLang: number) {
-    this.webPrice = ((numPages * numLang) * 30) - 30;
+    this.webPrice = numPages * numLang * 30 - 30;
     this.numPages = numPages;
     this.numLang = numLang;
-       
+
     return this.webPrice;
   }
 }

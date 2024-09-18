@@ -60,6 +60,11 @@ p {
     border-color: rgb(238, 226, 226); 
   }
 
+.search-name-btn {
+    background-color: transparent;
+    border: none;
+}  
+
 .search-icon-img {
     opacity: 60%;
     margin-bottom: 6px;
@@ -165,6 +170,7 @@ li {
 
     .cust-form-ctrl {
         margin-left: 0px;
+        min-width: 80px;
     }
 
     .cust-serv-cont {
@@ -180,6 +186,7 @@ li {
 
     .cust-form-ctrl {
         min-width: 80px;
+        margin-left: -22px;
       }
 
     .cust-serv-cont {

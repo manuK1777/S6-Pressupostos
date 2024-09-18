@@ -12,7 +12,6 @@ import { PanelComponent } from '../panel/panel.component';
 import { BudgetService } from '../services/budget.service';
 import { BudgetListComponent } from "../budget-list/budget-list.component";
 
-
 @Component({
   selector: 'app-home',
   template: '{{seoPrice}}, {{adsPrice}}, {{webPrice}}',
@@ -62,7 +61,6 @@ export class HomeComponent {
     this.preuPressuposat = this.preuPressuposat + this.webPriceInput;
   }
 
- 
   onCheckboxChange(event: Event, value: number) {
     const isChecked = (event.target as HTMLInputElement).checked;
 
@@ -82,7 +80,6 @@ export class HomeComponent {
     this.updatePreuPressuposat(this.webPriceInput);
   }
 
-
   getSeoValue() {
     return this.budgetForm.get('seo')?.value;
   }
@@ -94,7 +91,6 @@ export class HomeComponent {
   getWebValue() {
     return this.budgetForm.get('web')?.value;
   }
-
 
   onFormSubmit(): void {
     if (this.formIsInvalid === false) {
