@@ -60,6 +60,7 @@ export class BudgetService {
       },
     ],
   };
+
   numPages: number = 1;
   numLang: number = 1;
 
@@ -150,10 +151,7 @@ export class BudgetService {
   }
 
   totalWebPrice(numPages: number, numLang: number) {
-    this.webPrice = numPages * numLang * 30 - 30;
-    this.numPages = numPages;
-    this.numLang = numLang;
-
-    return this.webPrice;
+    this.webPrice = numPages * numLang * 30; // For added minimun 1 page 1 lang Home.Component, webPrice
+     return this.webPrice; 
   }
 }

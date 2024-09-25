@@ -30,7 +30,7 @@
 
                     <div class="col-2">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" formControlName="seo"
+                            <input class="form-check-input" type="checkbox" formControlName="CampaingSeo"
                                 (change)="onCheckboxChange($event, 300)" id="flexCheckSeo">
                             <label class="form-check-label" for="flexCheckSeo">
                                 Afegir
@@ -62,7 +62,7 @@
 
                     <div class="col-2">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" formControlName="ads"
+                            <input class="form-check-input" type="checkbox" formControlName="Ads"
                                 (change)="onCheckboxChange($event, 400)" id="flexCheckAds">
                             <label class="form-check-label" for="flexCheckAds">
                                 Afegir
@@ -76,7 +76,7 @@
 
         <div class="row justify-content-center">
             <div class="col-9">
-                <div class="form-control custom-box" [ngClass]="{'border-green': budgetForm.get('web')?.value}">
+                <div class="form-control custom-box" [ngClass]="{'border-green': budgetForm.get('WebPage')?.value}">
 
                     <div class="col-5 prod-cont">
                         <h4>
@@ -94,16 +94,16 @@
 
                     <div class="col-2">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" formControlName="web"
-                                (change)="onCheckboxChange($event, 530)" id="flexCheckWeb">
-                            <label class="form-check-label" for="flexCheckWeb">
+                            <input class="form-check-input" type="checkbox" formControlName="WebPage"
+                                (change)="onCheckboxChange($event, 500)" id="flexCheckWebPage">
+                            <label class="form-check-label" for="flexCheckWebPage">
                                 Afegir
                             </label>
                         </div>
                     </div>
 
-                    <div class="app-panel-container" *ngIf="budgetForm.get('web')?.value">
-                        <app-panel (webPriceInputChanged)="updatePreuPressuposat($event);"></app-panel>
+                    <div class="app-panel-container" *ngIf="budgetForm.get('WebPage')?.value && isBrowser">
+                        <app-panel (webPriceInputChanged)="updateWebPrice($event);" (numPagesChanged)="onNumPagesChanged($event)" (numLangChanged)="onNumLangChanged($event)"></app-panel>
                     </div>
 
                 </div>
