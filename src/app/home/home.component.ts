@@ -45,6 +45,7 @@ export class HomeComponent {
   checkedSeo!: boolean;
   checkedAds!: boolean;
   checkedWeb!: boolean;
+  name: any;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -55,7 +56,7 @@ export class HomeComponent {
     private cdr: ChangeDetectorRef
   ) {
 
-    this.isBrowser = isPlatformBrowser(this.platformId); // Check if running in the browser
+    this.isBrowser = isPlatformBrowser(this.platformId); 
 
     this.budgetForm = this.fb.group({
       CampaingSeo: [false],
@@ -63,7 +64,7 @@ export class HomeComponent {
       WebPage: [false],
 
       contactDetails: this.fb.group({
-        name: ['', Validators.required],
+        name: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]{1,40}$/)]],
         phone: ['', [Validators.required, Validators.pattern(/^[0-9]+$/)]],
         email: ['', [Validators.required, Validators.email]],
       }),
@@ -84,14 +85,7 @@ export class HomeComponent {
     });
   }
 
- 
-  ngOnInit(): void {
-
-    
-    // this.budgetForm.get('WebPage')?.valueChanges.subscribe(value => {
-    //   this.updateUrl();
-    // });
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void { 
     
@@ -116,7 +110,6 @@ export class HomeComponent {
         this.numLang = parseInt(params['lang'], 10);
       }
   
-      // Initialize selectedValues array based on URL parameters
       this.selectedValues = [];
       if (params['CampaingSeo'] === 'true') {
         this.selectedValues.push(this.seoPrice);
@@ -129,7 +122,7 @@ export class HomeComponent {
       }
   
       this.updatePreuPressuposat();
-      this.cdr.detectChanges(); // Trigger a change detection cycle
+      this.cdr.detectChanges(); 
     });
   }
  
@@ -149,7 +142,7 @@ export class HomeComponent {
       queryParams.WebPage = formValue.WebPage;
     }
 
-    if (formValue.CampaingSeo) { //CAMBIAR EL ORDEN PARA QUE SEA IGUAL AL DEL EJERCICIO, PRIMERO WEBPAGE---------------
+    if (formValue.CampaingSeo) { 
       queryParams.CampaingSeo = formValue.CampaingSeo;
     } 
 
@@ -198,7 +191,6 @@ export class HomeComponent {
       this.selectedValues.push(value);
     } else {
       const index = this.selectedValues.indexOf(value);
-      //this.webPriceInput = 0;
       this.numPages = 1;
       this.numLang = 1;
       if (index > -1) {
@@ -210,22 +202,20 @@ export class HomeComponent {
       this.webPriceInput = 0;
     }
    
-    //this.budgetService.totalWebPrice(this.numPages, this.numLang);
     this.updateWebPrice(this.webPriceInput);
-    //this.updatePreuPressuposat();
     this.updateUrl();
   }
 
   getSeoValue() {
-    return this.budgetForm.get('seo')?.value;
+    return this.budgetForm.get('CampaingSeo')?.value;
   }
 
   getAdsValue() {
-    return this.budgetForm.get('ads')?.value;
+    return this.budgetForm.get('Ads')?.value;
   }
 
   getWebValue() {
-    return this.budgetForm.get('web')?.value;
+    return this.budgetForm.get('WebPage')?.value;
   }
 
   onNumPagesChanged(numPages: any) {
@@ -264,7 +254,7 @@ export class HomeComponent {
       this.numLang = 1;
       this.webPriceInput = 0;
       this.preuPressuposat = 0;
-
+      
       this.updateUrl();
     }
   }

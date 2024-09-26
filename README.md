@@ -25,3 +25,20 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+# Budget Application Summary
+
+The Budget application allows users to create and manage quotes. Users can:
+
+- **Add Services**: Choose from SEO, Advertising, and Web Development services.
+- **Calculate Total**: Automatically calculate the total cost based on selected services.
+- **Submit Quotes**: Users can enter their contact information and submit quotes. The form prevents submission if fields are empty or incorrectly filled.
+- **View Quotes**: Submitted quotes are displayed in a list with sorting functionalities:
+  - **Sort by Date**: Button to sort quotes by date.
+  - **Sort by Price**: Button to sort quotes by total price.
+  - **Sort by Name**: Button to sort quotes alphabetically by client name.
+
+Tests are conducted to verify the accuracy of all calculations when selecting desired services, ensuring reliability and correctness in the final quotes.
+
+These enhancements make it easier to find and organize quotes, enhancing the overall user experience.
+

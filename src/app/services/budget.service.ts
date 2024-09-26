@@ -99,8 +99,7 @@ export class BudgetService {
       date: currentDate,
     };
 
-    this.addBudget(budgetItem);
-    console.log(this.pressupostos);
+    this.addBudget(budgetItem);    
   }
 
   sortByDate() {
@@ -129,6 +128,9 @@ export class BudgetService {
 
   sortByName(searchText: string) {
     
+    if (searchText === '') {
+      this.budgetsSignal.set(this.pressupostos.budgets);
+    } else {
     const foundBudgets = this.pressupostos.budgets.filter((budget) => {
       return budget.contactDetails.name.toLowerCase().includes(searchText.toLocaleLowerCase());
     });
@@ -139,6 +141,7 @@ export class BudgetService {
       this.budgetsSignal.set(this.pressupostos.budgets)
       alert("Pressupost no trobat")
     }
+  }
   }
 
   totalServices(selectedValues: number[]): number {
@@ -151,7 +154,7 @@ export class BudgetService {
   }
 
   totalWebPrice(numPages: number, numLang: number) {
-    this.webPrice = numPages * numLang * 30; // For added minimun 1 page 1 lang Home.Component, webPrice
+    this.webPrice = numPages * numLang * 30;
      return this.webPrice; 
   }
 }

@@ -132,28 +132,42 @@
                         </div>
                    </div>
 
-                    <div class="row pb-4 justify-content-center" formGroupName="contactDetails">
-                       <div class="col-9 pe-0 cust-contact-cont">
-
-                            <div class="form-group cust-form-group me-2">
-                                <input id="name" formControlName="name" class="form-control" type="text" placeholder="Nom"/>
-                            </div>
-                      
-                            <div class="form-group cust-form-group me-2">
-                                <input id="phone" formControlName="phone" class="form-control" type="tel" placeholder="Teléfon"/>
-                            </div>    
-                      
-                           <div class="form-group cust-form-group me-4">
-                                <input id="email" formControlName="email" class="form-control" type="email" placeholder="Email"/>
-                            </div>
-                       </div>
-
-                       <div class="col-3 px-0">
-                            <button type="submit" class="btn btn-primary cust-btn" [disabled]="formIsInvalid" (click)="onFormSubmit()">Sol·licitar pressupost <span>&#8702;</span></button>
-                       </div>
-
+                   <div class="row pb-4 justify-content-center" formGroupName="contactDetails">
+                    <div class="col-9 pe-0 cust-contact-cont">
+                  
+                      <div class="form-group cust-form-group me-2">
+                        <input id="name" formControlName="name" class="form-control" type="text" placeholder="Nom"/>
+                        <div *ngIf="budgetForm.get('contactDetails.name')?.invalid && (budgetForm.get('contactDetails.name')?.dirty || budgetForm.get('contactDetails.name')?.touched)">
+                          <div class="alert alert-danger p-1" role="alert">
+                            El nom és obligatori i han de ser lletres
+                          </div>
+                        </div>
+                      </div>
+                  
+                      <div class="form-group cust-form-group me-2">
+                        <input id="phone" formControlName="phone" class="form-control" type="tel" placeholder="Teléfon"/>
+                        <div *ngIf="budgetForm.get('contactDetails.phone')?.invalid && (budgetForm.get('contactDetails.phone')?.dirty || budgetForm.get('contactDetails.phone')?.touched)">
+                          <div class="alert alert-danger p-1" role="alert">
+                            El telèfon és obligatori i ha de ser un número
+                          </div>
+                        </div>
+                      </div>
+                  
+                      <div class="form-group cust-form-group me-4">
+                        <input id="email" formControlName="email" class="form-control" type="email" placeholder="Email"/>
+                        <div *ngIf="budgetForm.get('contactDetails.email')?.invalid && (budgetForm.get('contactDetails.email')?.dirty || budgetForm.get('contactDetails.email')?.touched)">
+                          <div class="alert alert-danger p-1" role="alert">
+                            El correu electrònic és obligatori i ha de ser vàlid
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    
+                  
+                    <div class="col-3 px-0">
+                      <button type="submit" class="btn btn-primary cust-btn" [disabled]="formIsInvalid" (click)="onFormSubmit()">Sol·licitar pressupost <span>&#8702;</span></button>
+                    </div>
+                  </div>
+                 
                 </div>
             </div>
         </div>
